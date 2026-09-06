@@ -1,0 +1,17 @@
+[package]
+name = "oma-daemon"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+oma-core.workspace = true
+oma-appimage.workspace = true
+oma-integrate.workspace = true
+oma-library.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+notify.workspace = true
+
+[dev-dependencies]
+backhand.workspace = true

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=appimagelauncher-lite
-Exec=appimagelauncher-lite
-Icon=AppImageLauncher
-Type=Application
-X-AppImage-Integrate=false
-NoDisplay=true
-Categories=Utility;

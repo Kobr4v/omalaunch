@@ -1,0 +1,31 @@
+[package]
+name = "omalaunch"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "omalaunch"
+path = "src/main.rs"
+
+[dependencies]
+oma-core.workspace = true
+oma-appimage.workspace = true
+oma-integrate.workspace = true
+oma-daemon.workspace = true
+oma-library.workspace = true
+oma-theme.workspace = true
+oma-update.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+gtk.workspace = true
+libadwaita.workspace = true
+fuzzy-matcher.workspace = true
+serde.workspace = true
+toml.workspace = true
+goblin.workspace = true
+libc.workspace = true
+notify.workspace = true
+
+[dev-dependencies]
+backhand.workspace = true

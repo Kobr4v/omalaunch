@@ -10,3 +10,5 @@ resources/l10n/*
 *.html
 *.swp
 *.rpm*
+/target/
+.omo/

@@ -1,0 +1,12 @@
+[package]
+name = "oma-appimage"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+oma-core.workspace = true
+thiserror.workspace = true
+goblin.workspace = true
+md5.workspace = true
+backhand.workspace = true

@@ -1,0 +1,11 @@
+{
+  // Merge into ~/.config/omarchy/extensions/omarchy-menu.jsonc (dotted ids).
+  // Row opens the omalaunch library; searchable via aliases.
+  "apps.omalaunch": {
+    "icon": "",
+    "label": "Omalaunch",
+    "action": "omalaunch",
+    "aliases": ["omalaunch", "appimage", "appimages"],
+    "description": "AppImage library: integrate, launch, update, remove"
+  }
+}

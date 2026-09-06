@@ -1,0 +1,46 @@
+[workspace]
+members = [
+    "crates/oma-core",
+    "crates/oma-appimage",
+    "crates/oma-integrate",
+    "crates/oma-theme",
+    "crates/oma-update",
+    "crates/oma-daemon",
+    "crates/oma-library",
+    "bins/omalaunch",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["Ahmed Shafiq"]
+description = "Omarchy-first AppImage library and launcher, written in pure Rust"
+homepage = "https://github.com/Kobr4v/omalaunch"
+repository = "https://github.com/Kobr4v/omalaunch"
+
+[workspace.dependencies]
+oma-core = { path = "crates/oma-core" }
+oma-appimage = { path = "crates/oma-appimage" }
+oma-integrate = { path = "crates/oma-integrate" }
+oma-theme = { path = "crates/oma-theme" }
+oma-update = { path = "crates/oma-update" }
+oma-daemon = { path = "crates/oma-daemon" }
+oma-library = { path = "crates/oma-library" }
+thiserror = "2"
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+goblin = "0.9"
+md5 = "0.7"
+backhand = "0.25"
+notify = "8"
+libc = "0.2"
+reqwest = { version = "0.12", features = ["blocking"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+gtk = { package = "gtk4", version = "0.9" }
+libadwaita = { package = "libadwaita", version = "0.7", features = ["v1_4"] }
+fuzzy-matcher = "0.3"

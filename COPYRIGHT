@@ -1,0 +1,18 @@
+# Copyright
+
+## omalaunch (all Rust code under `bins/`, `crates/`, plus `packaging/`,
+## `hooks/`, `scripts/`, `docs/`)
+
+Copyright (C) 2026 Ahmed Shafiq <acxd@tutamail.com>
+
+Licensed under the GNU General Public License v3.0 or later.
+See `LICENSE` for the full text.
+SPDX-License-Identifier: GPL-3.0-or-later
+
+All rights reserved to the copyright holder above.
+
+## Legacy icons (`resources/icons/`, `resources/fallback-icons/`)
+
+Retained from the AppImageLauncher project, copyright their respective
+authors, licensed under the MIT license. See `LICENSE.txt`.
+These assets are being replaced with original omalaunch artwork over time.

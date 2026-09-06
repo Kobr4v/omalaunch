@@ -1,0 +1,6 @@
+#!/bin/bash
+# omalaunch theme-set hook: the file watcher picks up the staged theme
+# change on its own; this ping exists so `omarchy hook theme-set` has a
+# named subscriber and failures stay visible.
+THEME_NAME=$1
+omalaunch --refresh-theme "$THEME_NAME"
