@@ -40,7 +40,7 @@ backhand = "0.25"
 notify = "8"
 libc = "0.2"
 reqwest = { version = "0.12", features = ["blocking"] }
-rusqlite = { version = "0.32", features = ["bundled"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
 gtk = { package = "gtk4", version = "0.9" }
 libadwaita = { package = "libadwaita", version = "0.7", features = ["v1_4"] }
 fuzzy-matcher = "0.3"
