@@ -34,7 +34,7 @@ serde = { version = "1", features = ["derive"] }
 toml = "0.8"
 clap = { version = "4", features = ["derive"] }
 tokio = { version = "1", features = ["full"] }
-goblin = "0.9"
+goblin = "0.10"
 md5 = "0.7"
 backhand = "0.25"
 notify = "8"
