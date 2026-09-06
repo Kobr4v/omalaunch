@@ -39,7 +39,7 @@ md5 = "0.7"
 backhand = "0.25"
 notify = "8"
 libc = "0.2"
-reqwest = { version = "0.12", features = ["blocking"] }
+reqwest = { version = "0.13", features = ["blocking"] }
 rusqlite = { version = "0.32", features = ["bundled"] }
 gtk = { package = "gtk4", version = "0.9" }
 libadwaita = { package = "libadwaita", version = "0.7", features = ["v1_4"] }
