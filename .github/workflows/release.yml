@@ -46,7 +46,7 @@ jobs:
           (cd dist && sha256sum "omalaunch-${GITHUB_REF_NAME}-x86_64.tar.gz" > SHA256SUMS)
 
       - name: Publish release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: |
             omalaunch-*.tar.gz
