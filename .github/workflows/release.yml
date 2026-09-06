@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: build + checksum + release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev libsqlite3-dev
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Version matches tag
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          grep -q "^version = \"$TAG\"$" Cargo.toml || \
+            (echo "Cargo.toml version does not match tag $TAG" && exit 1)
+
+      - name: Release build
+        run: cargo build --release --bin omalaunch
+
+      - name: Package + checksums
+        run: |
+          mkdir -p dist
+          cp target/release/omalaunch dist/
+          cp -r packaging dist/packaging
+          cp -r hooks dist/hooks
+          cp README.md LICENSE COPYRIGHT dist/
+          tar -czf "omalaunch-${GITHUB_REF_NAME}-x86_64.tar.gz" -C dist .
+          (cd dist && sha256sum "omalaunch-${GITHUB_REF_NAME}-x86_64.tar.gz" > SHA256SUMS)
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            omalaunch-*.tar.gz
+            dist/SHA256SUMS
+          generate_release_notes: true

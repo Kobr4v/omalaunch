@@ -1,45 +1,55 @@
-# Contributing to AppImageLauncher
+# Contributing to omalaunch
 
-There are many ways how you can help improve the AppImageLauncher project. Everyone with some interest in technology, not just developers, can help make the project better. Any contribution is welcome!
+Thanks for stopping by. This project is intentionally small-team shaped:
+a single Rust workspace, strict gates, and boring, reviewable diffs.
 
+## Ground rules
 
-## Translations
+1. **100% Rust.** No C, C++, CMake, or vendored native code in the tree.
+   System libraries (GTK4, sqlite) link dynamically; that is the only
+   exception, and it needs no new build machinery.
+2. **All four gates pass, always.** `cargo test --workspace`,
+   `cargo clippy --workspace --all-targets -- -D warnings`,
+   `cargo fmt --all -- --check`, `bash scripts/no-hardcoded-colors.sh`.
+   CI runs the same commands — a red CI means the PR is not ready.
+3. **No hardcoded colors.** Every visible color must resolve from the
+   active Omarchy theme at runtime. Read `docs/theming.md` first.
+4. **Keyboard + mouse parity.** Every action needs both a shortcut (in the
+   single table in `bins/omalaunch/src/shortcuts.rs`) and a clickable
+   control. Regenerate `docs/keyboard.md` via
+   `./target/debug/omalaunch --dump-shortcuts > docs/keyboard.md`.
+5. **`unsafe` lives in one file** (`bins/omalaunch/src/bypass.rs`), every
+   block with a `// SAFETY:` comment. No `.unwrap()`/`.expect()` outside
+   tests.
+6. **Offline, local-first.** No network calls except AppImage updates the
+   user explicitly triggers. No accounts, no telemetry, no controllers.
 
-AppImageLauncher is developed in the English language. If you speak any other language (e.g., your mother language or a foreign language), you can help translate AppImageLauncher into that language.
+## Workflow
 
-To translate AppImageLauncher, you can use the very good [Weblate](https://weblate.org). We run [our own instance](https://translate.assassinate-you.net/projects/appimagelauncher/). Just sign up there and start translating strings.
+1. Open an issue first for anything non-trivial (bug template asks for
+   repro + logs; feature template asks for the scope check).
+2. Keep PRs small and single-purpose. Fill in the PR template, including
+   the verification checklist — unverified PRs are sent back.
+3. Conventional commits (`feat(ui): …`, `fix(daemon): …`, `docs: …`,
+   `test: …`, `chore: …`). One logical change per commit.
+4. A maintainer (currently just Ahmed) reviews; two approvals are not
+   required, but CI must be green and the checklist complete.
 
-You can also review and improve existing translations.
+## Releasing
 
-During development, strings regularly change, and new strings are added while olds are removed. Therefore, you're welcome to check from time to time whether there's new work to be done. We appreciate every contribution.
+1. Bump `version` in the workspace `Cargo.toml` and add a `CHANGELOG.md`
+   entry (create the file if this is the first release).
+2. Commit as `chore(release): vX.Y.Z`, tag `vX.Y.Z`, push tag.
+3. The `release` workflow builds, checksums, and publishes the GitHub
+   Release automatically. Verify checksums before announcing.
 
+## Project layout
 
-## Documentation & Tutorials
+See the layout section in `README.md`. Engine crates (`crates/`) never
+touch GTK; the `bins/omalaunch` shell owns all UI. Headless subcommands
+must never initialize GTK.
 
-AppImageLauncher is a tool for everyone, not just tech savvy people. However, there is a lack of documentation. We invite every interested user to improve our README, add and edit our
-[Wiki](https://github.com/TheAssassin/AppImageLauncher/wiki), write articles, make (video) tutorials etc. The only limit is your imagination!
+## License
 
-The README already links to a lot of articles, videos, podcasts and potentially other media. If you find some more and want them to be added to the list, just send a
-[pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-
-
-## Bug reporting
-
-If you encounter a problem and consider it to be a bug, please do not hesitate to [open a new issue](https://github.com/TheAssassin/AppImageLauncher/issues/new). Even if you can't help fix the problem, reporting it is required
-and the only way for you to receive a solution. Also, if the problem is affecting others, too, others can find the discussion online and find out how to solve the issue.
-
-Please make sure to add as many details as possible to your bug report. This way, the developers can focus on finding a solution instead of playing information ping-pong.
-
-See also: https://www.chiark.greenend.org.uk/~sgtatham/bugs.html (but please don't send bug reports to Simon Tatham!)
-
-
-## Feature requests
-
-You can also [open a new issue](https://github.com/TheAssassin/AppImageLauncher/issues/new) to request new features. If you have an idea and think it might help the users of the project, please don't hesitate to send it to us.
-
-Please describe your idea as detailedly as possible.
-
-
-## Fix bugs and send pull requests
-
-If you encounter a bug and have the skill and ability to find the solution even, please feel free to send us a pull request. Any contribution is welcome!
+By contributing you agree your work lands under GPL-3.0-or-later,
+copyright retained by its authors, consistent with `LICENSE`/`COPYRIGHT`.

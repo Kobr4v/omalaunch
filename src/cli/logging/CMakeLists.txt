@@ -1,2 +1,0 @@
-add_library(cli_logging INTERFACE)
-set_property(TARGET cli_logging PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR})

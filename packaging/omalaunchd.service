@@ -1,0 +1,10 @@
+[Unit]
+Description=Omalaunch AppImage daemon
+
+[Service]
+ExecStart=/usr/bin/omalaunch daemon
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

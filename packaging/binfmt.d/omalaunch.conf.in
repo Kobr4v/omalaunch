@@ -1,0 +1,7 @@
+# Launch AppImages with omalaunch
+# we use the F (fix binary) mode to make sure the interpreter is available in all namespaces/cgroups/changeroots
+# without having to have the binary in a specific place
+# @BINFMT_INTERPRETER_PATH@ is substituted at install time with the
+# absolute path of the omalaunch binary.
+:appimage-type1:M:8:AI\x01::@BINFMT_INTERPRETER_PATH@:F
+:appimage-type2:M:8:AI\x02::@BINFMT_INTERPRETER_PATH@:F
